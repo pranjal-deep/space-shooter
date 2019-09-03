@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* background-image: url(); */
+    background: url("../assets/tank-bg-3.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+   }
+
+   h3 {
+       font-family: 'Russo One', sans-serif;
+       text-align: center;
+       margin: 2%;
+       position: absolute;
+   }
