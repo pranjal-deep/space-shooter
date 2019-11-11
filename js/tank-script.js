@@ -13,13 +13,17 @@ function preload() {
   movingSpider2 = loadAnimation('assets/dead-placeholder.png','assets/dead-placeholder.png');
 }
 
+
+//Creates the initial setup of spaceship at the middle and spiders at random positions
 function setup() {
   canvasWidth = windowWidth;
   canvasHeigth = windowHeight;
 
   for (let i = 0 ; i < noOfSpiders ; i++) {
     const spider = {
-      image:movingSpider, x:30*(Math.floor(Math.random()*((windowWidth-tankWidth-20)/30)))+tankWidth/2, y:10*(Math.floor(Math.random()*-1*rangeOfSpiders/10)), life:3
+      image:movingSpider, 
+      x:30*(Math.floor(Math.random()*((windowWidth-tankWidth-20)/30)))+tankWidth/2, 
+      y:10*(Math.floor(Math.random()*-1*rangeOfSpiders/10)), 
     }
     spiders.push(spider);
   }
@@ -29,9 +33,12 @@ function setup() {
   tankPosition = canvasWidth/2-tankWidth/2;
 }
 
+
 function reset() {
   for (let i = 0 ; i < noOfSpiders ; i++) {
-      spiders[i].image = movingSpider, spiders[i].x=Math.floor(Math.random()*(windowWidth-tankWidth-20))+tankWidth/2, spiders[i].y=Math.floor(Math.random()*-400);
+      spiders[i].image = movingSpider, 
+      spiders[i].x=30*(Math.floor(Math.random()*((windowWidth-tankWidth-20)/30)))+tankWidth/2, 
+      spiders[i].y=10*(Math.floor(Math.random()*-1*rangeOfSpiders/10));
   }
   tankPosition = canvasWidth/2-tankWidth/2;
   score=0;
@@ -55,10 +62,7 @@ function draw() {
 }
 
 function createTank() {
-  // let tankRatio = 0.7, tankBodyHeigth = tankRatio*tankHeight, tankNozzleHeight = tankHeight - tankBodyHeigth;
   animation(tank,tankPosition+tankWidth/2,canvasHeigth-tankHeight/2);
-  // image(tank,tankPosition,canvasHeigth-tankHeight,tankWidth,tankHeight);
-  // rect(tankPosition+tankWidth/2-10,canvasHeigth-tankHeight,20,tankNozzleHeight,2,2,0,0)
 }
 
 function keyPressed() {
@@ -70,9 +74,6 @@ function keyPressed() {
   } else if (keyCode === UP_ARROW) {
     fire = true;
   }
-}
-
-function keyTyped() {
   if(key == 'r' || key == 'R') {
     reset();
   }
@@ -85,16 +86,17 @@ function tankFire() {
   fire = false;
 }
 
+
+//Moves the spiders down
 function createTarget() {
   for(let i = 0 ; i<spiders.length; i++) {
     animation(spiders[i].image, spiders[i].x, spiders[i].y, 40, 40);
-    // image(spiders[i].image, spiders[i].x, spiders[i].y, 40, 40);
   }
 }
 
 function playGame() {
   for(let i = 0; i<spiders.length; i++) {
-    if(tankPosition + tankWidth/2-2 >= spiders[i].x && tankPosition + tankWidth/2-2 <= spiders[i].x+40 && fire === true && spiders[i].y > 0 && spiders[i].y < windowHeight-100) {
+    if(tankPosition + tankWidth/2-2 >= spiders[i].x-20 && tankPosition + tankWidth/2-2 <= spiders[i].x+20 && fire === true && spiders[i].y > 0 && spiders[i].y < windowHeight-100) {
       spiders[i].image = movingSpider2;
     }
   }
@@ -117,7 +119,6 @@ function targetMovement() {
   } else {
     count ++;
   }
-// console.log('Count: '+count + 'Spider' + spiders);
 }
 
 function scoring() {
@@ -134,12 +135,6 @@ function scoring() {
   if(!gameRunning) {
     gameOverMessage = 'Game Over. Press r to restart';
     gameRunning = true;
-    
-    // for(let i = 0; i < spiders.length; i++) {
-    //   if(spiders[i].image == movingSpider2){
-    //     score++;
-    //   }
-    // }
   }
   text(gameOverMessage, windowHeight/2, windowWidth/2-100);
 }
