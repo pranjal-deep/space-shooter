@@ -5,3 +5,5 @@ Shoot and move with UP and RIGHT, LEFT arrow keys. Final score depends on the nu
 
 
 Live version at: https://pranjal-deep.github.io/space-shooter/
+
+High score is saved locally.
