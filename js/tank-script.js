@@ -5,12 +5,12 @@ let img; let count = 0, gameRunning = false;
 var tank, movingSpider, movingSpider2, noOfSpiders=100, rangeOfSpiders = 2000, gameOverMessage = '', highScore = 0;
 
 function preload() {
-  img = loadImage('../assets/spider.png');
-  img2 = loadImage('../assets/dead-placeholder.png');
-  bgImg = loadImage('../assets/tank-bg-3.png');
-  tank = loadAnimation('../assets/spaceship-1.png','../assets/spaceship-7.png');
-  movingSpider = loadAnimation('../assets/spider-1.png','../assets/spider-5.png'); 
-  movingSpider2 = loadAnimation('../assets/dead-placeholder.png','../assets/dead-placeholder.png');
+  img = loadImage('assets/spider.png');
+  img2 = loadImage('assets/dead-placeholder.png');
+  bgImg = loadImage('assets/tank-bg-3.png');
+  tank = loadAnimation('assets/spaceship-1.png','assets/spaceship-7.png');
+  movingSpider = loadAnimation('assets/spider-1.png','assets/spider-5.png'); 
+  movingSpider2 = loadAnimation('assets/dead-placeholder.png','assets/dead-placeholder.png');
 }
 
 function setup() {
